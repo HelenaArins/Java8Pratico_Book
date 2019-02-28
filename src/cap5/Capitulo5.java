@@ -1,10 +1,13 @@
 package cap5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
+import static java.util.Comparator.comparing;
 import java8_book.Usuario;
 
 public class Capitulo5 {
@@ -31,6 +34,15 @@ public class Capitulo5 {
 		usuarios.sort( (u1, u2)-> u1.getName().compareTo(u2.getName()));
 		
 		usuarios.sort(Comparator.comparing(u -> u.getName()));
+		
+		List<String> palavras = Arrays.asList("Casa do Código", "Bola", "Arvore");
+		palavras.sort(Comparator.naturalOrder());
+		
+		
+		usuarios.sort(Comparator.comparing(u -> u.getPontos()));
+		
+		Function<Usuario, String> byName = Usuario::getName;
+		usuarios.sort(comparing(byName));
 	}
 	
 }
